@@ -4,7 +4,7 @@ const dbConnect = require('./lib/utils/dbConnect');
 
 dbConnect();
 
-const PORT = process.env.PORT || 2309;
+const PORT = process.env.PORT || 7891;
 
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}.`);
