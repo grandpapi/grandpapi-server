@@ -6,13 +6,13 @@ require('../utils/data-helpers');
 describe('Database routes', () => {
   it('creates a new database in mongodb', () => {
     return request(app)
-      .post('/api/v1/databases')
+      .post('/api/v1/meganap/databases')
       .send({
         dbName: 'something',
         publicAccess: true,
         // deployed: false,
-        username: 'chi-chi',
-        userId: '1234'
+        nickname: 'chi-chi',
+        sub: '1234'
       })
       .then(res => {
         expect(res.body).toEqual({
