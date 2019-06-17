@@ -9,19 +9,19 @@ describe('Database routes', () => {
       .post('/api/v1/databases')
       .send({
         dbName: 'something',
-        publicBool: true,
+        publicAccess: true,
         // deployed: false,
-        ownerUsername: 'chi-chi',
-        ownerId: '1234'
+        username: 'chi-chi',
+        userId: '1234'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           dbName: 'something',
-          publicBool: true,
+          publicAccess: true,
           deployed: false,
-          ownerUsername: 'chi-chi',
-          ownerId: '1234',
+          username: 'chi-chi',
+          userId: '1234',
           __v: 0
         });
       });
