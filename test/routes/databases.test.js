@@ -32,4 +32,26 @@ describe('Database routes', () => {
         });
       });
   });
+  
+  it('gets all databases in mongodb', async () => {
+    await request(app)
+      .post('/api/v1/meganap/databases')
+      .send({
+        dbName: 'something',
+        publicAccess: true
+      });
+
+    const res = await request(app)
+      .get('/api/v1/meganap/databases/1234');
+
+    expect(res.body).toEqual([{
+      _id: expect.any(String),
+      dbName: 'something',
+      publicAccess: true,
+      deployed: false,
+      username: 'chi-chi',
+      userId: '1234',
+      __v: 0
+    }]);
+  });
 });
