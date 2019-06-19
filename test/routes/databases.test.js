@@ -14,7 +14,6 @@ jest.mock('../../lib/middleware/ensure-auth.js', () => () => (req, res, next) =>
 
 describe('Database routes', () => {
   it('creates a new database in mongodb', () => {
-    expect(1).toBeTruthy();
     return request(app)
       .post('/api/v1/meganap/databases')
       .send({
