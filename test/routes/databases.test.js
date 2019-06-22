@@ -13,24 +13,22 @@ jest.mock('../../lib/middleware/ensure-auth.js', () => (req, res, next) => {
 });
 
 describe('Database routes', () => {
-  it('creates a new database in mongodb', () => {
-    return request(app)
+  it('creates a new database in mongodb', async () => {
+    const res = await request(app)
       .post('/api/v1/meganap/databases')
       .send({
         dbName: 'something',
         publicAccess: true
-      })
-      .then(res => {
-        expect(res.body).toEqual({
-          _id: expect.any(String),
-          dbName: 'something',
-          publicAccess: true,
-          deployed: false,
-          username: 'chi-chi',
-          userId: '1234',
-          __v: 0
-        });
       });
+    expect(res.body).toEqual({
+      _id: expect.any(String),
+      dbName: 'something',
+      publicAccess: true,
+      deployed: false,
+      username: 'chi-chi',
+      userId: '1234',
+      __v: 0
+    });
   });
   
   it('gets database by db id', async () => {

@@ -24,7 +24,10 @@ describe('Model routes', () => {
       .send({
         loading: false,
         mdlName: 'Something',
-        mdlSchema: {},
+        mdlSchema: {
+          name: String,
+          age: Number
+        },
         mdlId: '',
         dbId: dbId.toString()
       })
@@ -32,7 +35,10 @@ describe('Model routes', () => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           mdlName: 'Something',
-          mdlSchema: '{}',
+          mdlSchema: JSON.stringify({
+            name: String,
+            age: Number
+          }),
           dbId: expect.any(String),
           __v: 0
         });
