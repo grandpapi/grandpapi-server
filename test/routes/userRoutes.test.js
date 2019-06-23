@@ -20,40 +20,29 @@ describe('Database routes', () => {
     const res = await request(app)
       .post(`${BASE_PATH}`)
       .send({
-        fields: [
-          ['name', 'String'],
-          ['age', 'Number']
-        ],
-        data: {
-          name: 'test name',
-          age: '42'
-        },
+        name: 'test name',
+        age: 42
       });
-      
+
     expect(res.body).toEqual({
       _id: expect.any(String),
+      name: 'test name',
+      age: 42,
       __v: 0
     });
   });
-  
+
   it('gets all data from user route', async () => {
     const createRes = await request(app)
       .post(`${BASE_PATH}`)
       .send({
-        fields: [
-          ['name', 'String'],
-          ['age', 'Number']
-        ],
-        data: {
-          name: 'test name',
-          age: '42'
-        },
+        name: 'test name',
+        age: '42'
       });
 
     const res = await request(app)
       .get(`${BASE_PATH}`);
-      
+
     expect(res.body).toEqual([createRes.body]);
   });
 });
-

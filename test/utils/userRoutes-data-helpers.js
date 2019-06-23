@@ -17,13 +17,13 @@ beforeEach(async () => {
     });
 
   await request(app)
-    .post(`${'/api/v1/meganap/models'}`)
+    .post('/api/v1/meganap/models')
     .send({
       loading: false,
       mdlName: 'mdlName',
       mdlSchema: {
-        name: String,
-        age: Number
+        name: 'String',
+        age: 'Number'
       },
       dbId: dbRes.body._id
     });
